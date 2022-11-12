@@ -1,7 +1,14 @@
+import os 
+import sys
+
+current = os.path.dirname(os.path.realpath(__file__))
+parent = os.path.dirname(current)
+sys.path.append(parent)
+
 from transformers import AutoModelWithLMHead, AutoTokenizer 
 import torch
 import logging 
-from utils import (
+from utils.utils import (
         get_lm,
         initialize_device_settings
         )
@@ -125,14 +132,14 @@ def run_chitchat(
 if __name__ == "__main__": 
     model, tokenizer = get_lm()
     devices, _ = initialize_device_settings(use_cuda=True)
-    model.to(device)
+    model.to(devices[0])
     model.eval()
 
 
     run_chitchat(
             model,
             tokenizer, 
-            devices, 
+            devices[0], 
             max_length = 200, 
             top_k = 2, 
             top_p = 0.9, 

@@ -7,7 +7,7 @@ from torch import multiprocessing as mp
 import logging
 import transformers 
 
-transformers.logginng.set_verbosity_error()
+transformers.logging.set_verbosity_error()
 
 logger = logging.getLogger(__name__)
 
