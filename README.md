@@ -11,11 +11,17 @@ $ cd chitchat
 ```
 
 ## Usage
-To start the chatchit bot
+Colab Demo: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Wbo0ekkN7OilfvHC1PZsZ0KUUyYDlyz-?usp=sharing)
+
+
+or 
+
+To start the chatchit bot 
 ```python
 python inference.py
 ```
 - Feel free to access the code in `inference.py` for change generation hyper-parameters such as `top_k`, `top_p`, `temperature`, `repetition_penalty` and so on 
+- Replace model if you want to test others, change current value of `model_name` in `get_lm()` function to `microsoft/DialoGPT-small`, `microsoft/DialoGPT-medium`, or `microsoft/DialoGPT-large`
 - If we keep the history (or context) from previous utterances during the conversation to generate the next bot's respond. It is long and noisy, later generation results get worse. Therefore, I suggest two ways dealing with it: 
     - `reset=True`: when the history storage has `thresh_reset` number of context (or previous utterances), the history will be cleaned and become empty 
     - `reset=False`: when the number of contexts (or previous utterances) exceed `thresh_reset`, the history storage will be cut off and always committed to only have `thresh_reset` number of utterances kept in the history
